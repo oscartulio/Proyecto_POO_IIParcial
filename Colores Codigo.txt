@@ -1,0 +1,19 @@
+Verde Primario
+#64dd17
+
+Verde secundario 
+#9cff57
+
+Verde terceario
+#1faa00
+
+
+
+Gris Primario
+#78909c
+
+Gris Secundario
+#a7c0cd
+
+Gris Terceario
+#4b636e
