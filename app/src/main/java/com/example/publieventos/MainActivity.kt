@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        /*Cambio de activity*/
+        /*Cambio de activity a agreagar evento*/
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener {
             val intento1 = Intent(this,AgregarEvento :: class.java )
