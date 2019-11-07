@@ -14,11 +14,16 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import android.widget.TextView
+import kotlinx.android.synthetic.main.agregar_evento_fragment.*
 
-class MainActivity : AppCompatActivity() {
+
+ class MainActivity : AppCompatActivity() {
 
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
+
+     private lateinit var appBarConfiguration: AppBarConfiguration
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,3 +70,7 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
+
+
+
