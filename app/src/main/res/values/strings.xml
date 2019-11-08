@@ -14,9 +14,8 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 
-    /*conexion de entre textview y listview*/
 
-    <string name="textviewFTlistview">Seleccione un nombre</string>
+
     
 
 </resources>
