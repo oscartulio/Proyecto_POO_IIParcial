@@ -1,8 +1,12 @@
 package com.example.publieventos
 
 import android.app.DatePickerDialog
+import android.app.Dialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.os.VibrationEffect
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.navigation.findNavController
@@ -19,30 +23,33 @@ import android.view.View
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.TextView
+import android.widget.TimePicker
 import androidx.core.graphics.scaleMatrix
 import kotlinx.android.synthetic.main.agregar_evento_fragment.*
 import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.*
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
 
-
-     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
         /*Cambio de activity a agreagar evento*/
+
+
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener {
-            val intento1 = Intent(this,AgregarEvento :: class.java )
+            val intento1 = Intent(this, AgregarEvento::class.java)
             startActivity(intento1)
         }
 
@@ -61,33 +68,9 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
-        /*DatePicker*/
-        val Calendarvalue=findViewById<View>(R.id.textView)as TextView
-        val submit=findViewById<View>(R.id.button)as Button
-        val cal=Calendar.getInstance()
-        submit.setOnClickListener(View.OnClickListener {
-             val date=object: DatePickerDialog.OnDateSetListener{
-                 override fun onDateSet(view: DatePicker?, year: Int, month: Int, day: Int) {
-                  cal.set(Calendar.YEAR,year)
-                  cal.set(Calendar.MONTH,month)
-                  cal.set(Calendar.DAY_OF_MONTH,day)
-                  Calendarvalue.text=SimpleDateFormat("MM/dd/yyyy",Locale.US).format(cal.getTime())
-                 }
-
-             }
-            DatePickerDialog(this,date,cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
-        })
-
-
-
-
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
@@ -103,9 +86,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
 }
-
-
 
 
