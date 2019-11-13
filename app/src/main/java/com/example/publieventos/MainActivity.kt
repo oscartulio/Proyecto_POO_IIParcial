@@ -30,6 +30,8 @@ import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.agregar_evento_activity.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,12 +44,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
-
-
-
-
-
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         /*Cambio de activity a agreagar evento*/
@@ -55,7 +51,8 @@ class MainActivity : AppCompatActivity() {
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener {
-            val intento1 = Intent(this, AgregarEvento::class.java)
+            val intento1 = Intent(this,
+                CalendarActivity::class.java)
             startActivity(intento1)
         }
 
