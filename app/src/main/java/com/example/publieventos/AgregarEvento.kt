@@ -14,6 +14,20 @@ class AgregarEvento : AppCompatActivity() {
                 .replace(R.id.container, AgregarEventoFragment.newInstance())
                 .commitNow()
         }
+
+
+
+
+
+
+
+
+
     }
+
+
+
+
+
 
 }
