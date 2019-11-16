@@ -1,17 +1,20 @@
 package com.example.publieventos
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
+import android.text.Html.fromHtml
 import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_calendar.*
 import kotlinx.android.synthetic.main.agregar_evento_activity.*
-
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -67,38 +70,34 @@ class CalendarActivity : AppCompatActivity(){
             editor.putString("Descripcion", descripcion)
             editor.apply()
              Toast.makeText(this,"Guardado satisfactoriamente",Toast.LENGTH_LONG).show()
-
         }
 
 
         ShowBtn.setOnClickListener {
-            val show_event = Show_Events_Activity()
 
             /*------------------------------------------------------------------------*/
-            val intento2 = Intent(this, Show_Events_Activity :: class.java)
-            startActivity(intento2)
+            val Builder = AlertDialog.Builder(this)
+                Builder.setTitle("Descripcion Del Evento")
+            val event = sharedPreferences.getString("Evento", "")
+            val fecha = sharedPreferences.getString("Fecha", "")
+            val hora = sharedPreferences.getString("Hora", "")
+            val descripcion = sharedPreferences.getString("Descripcion", "")
+                Builder.setMessage(fromHtml("<big><br><br>Evento:<br><br></big> $event \n<big><br><br>Fecha:<br><br></big> $fecha \n<big><br><br>Hora:<br><br></big> $hora \n<big><br><br>Equipo:<br><br></big>\n$descripcion"))
 
+                Builder.setNeutralButton("Hecho",{ dialogInterface: DialogInterface, i: Int ->
+                    finish() })
 
-
+            Builder.show()
 
 
             /*----------------------------------------------------------------------------*/
-
-            val event = sharedPreferences.getString("Evento", "")
-                val fecha = sharedPreferences.getString("Fecha", "")
-                val hora = sharedPreferences.getString("Hora", "")
-                val descripcion = sharedPreferences.getString("Descripcion", "")
-
-            show_event.getValues(event,fecha,hora,descripcion)
+/*
 
 
-                textView3.text = "Evento: $event \nFecha: $fecha \nHora: $hora \nDescripcion: $descripcion "
-
-
+*/
 
         }
 
-    /*--------------------------------------------------------------------------------------------------------------*/
 
 
        }
