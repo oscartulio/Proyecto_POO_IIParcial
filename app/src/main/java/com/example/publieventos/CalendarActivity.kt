@@ -1,21 +1,14 @@
 package com.example.publieventos
-
 import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Html
 import android.text.Html.fromHtml
 import android.widget.DatePicker
-import android.widget.TimePicker
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_calendar.*
-import kotlinx.android.synthetic.main.agregar_evento_activity.*
-import java.text.SimpleDateFormat
 import java.util.*
 
 

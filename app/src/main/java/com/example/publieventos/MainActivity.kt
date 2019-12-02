@@ -1,14 +1,7 @@
 package com.example.publieventos
-
-import android.app.DatePickerDialog
-import android.app.Dialog
-import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.os.VibrationEffect
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -19,21 +12,16 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
-import android.view.View
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.TextView
-import android.widget.TimePicker
-import androidx.core.graphics.scaleMatrix
-import kotlinx.android.synthetic.main.agregar_evento_fragment.*
-import org.w3c.dom.Text
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.agregar_evento_activity.*
-import kotlinx.android.synthetic.main.nav_header_main.*
+import android.view.MenuItem
+import android.widget.*
+import androidx.core.view.GravityCompat
 
-class MainActivity : AppCompatActivity() {
+import kotlinx.android.synthetic.main.activity_main.*
+
+
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+
 
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -44,18 +32,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         /*Cambio de activity a agreagar evento*/
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener {
-            val intento1 = Intent(this,
-                CalendarActivity::class.java)
+            val intento1 = Intent(
+                this,
+                CalendarActivity::class.java
+            )
             startActivity(intento1)
         }
 
+                    /*Muestra el panel de botones de la parte izquierda*/
 
+/*
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
@@ -70,19 +63,55 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+*/
+
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
 
+
+    /*Desplega el menu de la parte izquierda*/
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+
+    override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
+        when (menuItem.itemId) {
+            R.id.nav_home -> {
+                Toast.makeText(this, "Publication", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_gallery -> {
+                Toast.makeText(this, "Agregar Evento", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_slideshow -> {
+                Toast.makeText(this, "Newsletter", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_tools -> {
+                Toast.makeText(this, "Join Community", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_share -> {
+                Toast.makeText(this, "Contact us", Toast.LENGTH_SHORT).show()
+            }
+        }
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return true
 
     }
 
+/*permite presionar el boton atras y que ek menu se cierre*/
+    override fun onBackPressed() {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
 
 
 
