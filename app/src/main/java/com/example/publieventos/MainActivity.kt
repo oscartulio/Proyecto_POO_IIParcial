@@ -92,7 +92,6 @@ class MainActivity : AppCompatActivity() {
         lvEventos.adapter = notesAdapter
     }
 
-    /***************************************/
 
     inner class NotesAdapter : BaseAdapter {
 
@@ -133,6 +132,7 @@ class MainActivity : AppCompatActivity() {
                 var dbManager = EventDbManager(this.context!!)
                 val selectionArgs = arrayOf(mNote.id.toString())
                 dbManager.delete("Id=?", selectionArgs)
+
                 loadQueryAll()
             }
 
