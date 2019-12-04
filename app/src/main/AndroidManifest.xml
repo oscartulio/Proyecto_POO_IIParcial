@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Show_Events_Activity"></activity>
+        <activity android:name=".EventActivity"></activity>
+        <activity android:name=".AddEventActivity" />
+        <activity android:name=".Show_Events_Activity" />
         <activity android:name=".ShowInformationActivity" />
         <activity android:name=".CalendarActivity" />
         <activity android:name=".AgregarEvento" />
