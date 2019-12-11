@@ -141,9 +141,18 @@ class MainActivity : AppCompatActivity() {
                 dbManager.delete("Id=?", selectionArgs)
 
                 showDialog()
-                
+
                 loadQueryAll()
             }
+            /*Mostrar el dialog de los eventos*/
+            vh.tvTitle.setOnClickListener{
+                showDialog()
+            }
+            
+            
+            
+            
+            
 
             return view
         }
