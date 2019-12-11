@@ -24,7 +24,7 @@ class AddEventActivity : AppCompatActivity() {
                 edtDate.setText(bundle.getString("Date"))
                 edtTime.setText(bundle.getString("Time"))
                 edtStaff.setText(bundle.getString("Staff"))
-                edtDescription.setText(bundle.getString("Description"))
+                edtDescription.setText(bundle.getString("Content"))
             }
         } catch (ex: Exception) {
         }
@@ -37,7 +37,7 @@ class AddEventActivity : AppCompatActivity() {
             values.put("Date", edtDate.text.toString())
             values.put("Time", edtTime.text.toString())
             values.put("Staff", edtStaff.text.toString())
-            values.put("Description", edtDescription.text.toString())
+            values.put("Content", edtDescription.text.toString())
 
             if (id == 0) {
                 val mID = dbManager.insert(values)

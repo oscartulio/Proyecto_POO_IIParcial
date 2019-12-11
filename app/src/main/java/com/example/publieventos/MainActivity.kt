@@ -1,5 +1,7 @@
 package com.example.publieventos
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -112,7 +114,7 @@ class MainActivity : AppCompatActivity() {
                 view = layoutInflater.inflate(R.layout.activity_event, parent, false)
                 vh = ViewHolder(view)
                 view.tag = vh
-                Log.i("JSA", "set Tag for ViewHolder, position: " + position)
+                Log.i("1", "Posocion de ViewHolder" + position)
             } else {
                 view = convertView
                 vh = view.tag as ViewHolder
@@ -122,24 +124,33 @@ class MainActivity : AppCompatActivity() {
 
             vh.tvTitle.text = mNote.title
 
-            vh.tvContent.text = mNote.content
+            vh.tvDate.text = mNote.date
+
+            vh.tvTime.text = mNote.time
 
             vh.ivEdit.setOnClickListener {
                 updateNote(mNote)
             }
 
+            /*Eliminar*/
             vh.ivDelete.setOnClickListener {
+
+
                 var dbManager = EventDbManager(this.context!!)
                 val selectionArgs = arrayOf(mNote.id.toString())
                 dbManager.delete("Id=?", selectionArgs)
 
+                showDialog()
+                
                 loadQueryAll()
             }
 
             return view
         }
 
-        /****/
+
+
+        /****************/
         override fun getItem(position: Int): Any {
             return notesList[position]
         }
@@ -157,30 +168,26 @@ class MainActivity : AppCompatActivity() {
         var intent = Intent(this, AddEventActivity::class.java)
         intent.putExtra("MainActId", note.id)
         intent.putExtra("MainActTitle", note.title)
-        intent.putExtra("MainActContent", note.content)
+        intent.putExtra("MainDate", note.date  )
+       // intent.putExtra("MainTime", note.time  )
         startActivity(intent)
     }
 
     private class ViewHolder(view: View?) {
         val tvTitle: TextView
-        val tvContent: TextView
+        val tvDate: TextView
+        val tvTime: TextView
         val ivEdit: ImageView
         val ivDelete: ImageView
 
         init {
             this.tvTitle = view?.findViewById(R.id.tvTitle) as TextView
-            this.tvContent = view?.findViewById(R.id.tvContent) as TextView
+            this.tvDate = view?.findViewById(R.id.tvDate) as TextView
+            this.tvTime = view?.findViewById(R.id.tvTime) as TextView
             this.ivEdit = view?.findViewById(R.id.ivEdit) as ImageView
             this.ivDelete = view?.findViewById(R.id.ivDelete) as ImageView
         }
     }
-
-
-
-
-
-
-
 
 /*
         /*no se pero tiene que ver con el panel izquierdo*/
@@ -206,7 +213,34 @@ class MainActivity : AppCompatActivity() {
         }
 */
 
-/*última linea*/
+private fun showDialog() {
 
+    lateinit var dialog: AlertDialog
+
+
+
+    val builder = AlertDialog.Builder(this)
+
+
+    builder.setTitle("Información")
+
+
+    builder.setMessage("Se ha Removido el Evento")
+
+
+    val dialogClickListener = DialogInterface.OnClickListener { _, which -> }
+
+    builder.setNeutralButton("Hecho",dialogClickListener)
+
+    dialog = builder.create()
+
+    dialog.show()
 }
+
+
+/*última linea*/
+}
+
+
+
 

@@ -21,7 +21,7 @@ class EventDbManager {
 
     private val CREATE_TABLE_SQL =
         "CREATE TABLE IF NOT EXISTS " + dbTable + " (" + colId + " " +
-                "INTEGER PRIMARY KEY," + colTitle + " TEXT, " + colDate + " TEXT, " + colTime + " TEXT, " + colStaff + " TEXT, " + colContent + " TEXT);"
+                "INTEGER PRIMARY KEY," + colTitle + " TEXT, " + colDate + " DATE, " + colTime + " TIME, " + colStaff + " STAFF, " + colContent + " CONTENT);"
     private var db: SQLiteDatabase? = null
 
     constructor(context: Context) {

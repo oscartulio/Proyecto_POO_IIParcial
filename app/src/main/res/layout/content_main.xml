@@ -25,11 +25,13 @@
 
     <ListView
         android:id="@+id/lvEventos"
-        android:layout_width="401dp"
-        android:layout_height="637dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="390dp"
+        android:layout_height="488dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment" />
+        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment"
+        app:layout_constraintVertical_bias="0.53" />
 </androidx.constraintlayout.widget.ConstraintLayout>
