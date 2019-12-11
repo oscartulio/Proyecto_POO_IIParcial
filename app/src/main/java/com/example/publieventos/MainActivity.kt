@@ -1,9 +1,12 @@
 package com.example.publieventos
 import android.app.AlertDialog
+import android.content.ContentValues
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,6 +15,7 @@ import androidx.appcompat.widget.Toolbar
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import kotlinx.android.synthetic.main.activity_add_event.*
 import kotlinx.android.synthetic.main.content_main.*
 
 
@@ -60,8 +64,21 @@ class MainActivity : AppCompatActivity() {
 
         /*al dar click en el listview dice el nombre del evento*/
 
-      /* lvEventos.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, position, id ->
-            Toast.makeText(this, "Click on " + listEvents[position].title, Toast.LENGTH_SHORT).show() }*/
+       lvEventos.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, position, id ->
+           val Builder = AlertDialog.Builder(this)
+           Builder.setTitle("Descripcion Del Evento")
+            val title = (listEvents[position].title)
+            val date = (listEvents[position].date)
+            val time = (listEvents[position].time)
+            val staff = (listEvents[position].staff)
+            val content =(listEvents[position].content)
+           Builder.setMessage(Html.fromHtml("<big><br><br>Evento:<br><br></big> $title \n<big><br><br>Fecha:<br><br></big> $time \n<big><br><br>Hora:<br><br></big> $date \n<big><br><br>Staff:<br><br></big>\n$staff \n" +
+                   "<big><br><br>Staff:<br><br></big>\n" +
+                   "$content"))
+           Builder.setNeutralButton("Hecho",{ dialogInterface: DialogInterface, i: Int -> })
+            Builder.show()
+       }
+
     }
 
     override fun onResume() {
@@ -128,6 +145,7 @@ class MainActivity : AppCompatActivity() {
 
             vh.tvTime.text = mNote.time
 
+            /*Editar evento*/
             vh.ivEdit.setOnClickListener {
                 updateNote(mNote)
             }
@@ -135,24 +153,15 @@ class MainActivity : AppCompatActivity() {
             /*Eliminar*/
             vh.ivDelete.setOnClickListener {
 
-
                 var dbManager = EventDbManager(this.context!!)
                 val selectionArgs = arrayOf(mNote.id.toString())
                 dbManager.delete("Id=?", selectionArgs)
 
                 showDialog()
-
                 loadQueryAll()
+
             }
-            /*Mostrar el dialog de los eventos*/
-            vh.tvTitle.setOnClickListener{
-                showDialog()
-            }
-            
-            
-            
-            
-            
+
 
             return view
         }
@@ -178,7 +187,6 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("MainActId", note.id)
         intent.putExtra("MainActTitle", note.title)
         intent.putExtra("MainDate", note.date  )
-       // intent.putExtra("MainTime", note.time  )
         startActivity(intent)
     }
 
@@ -195,7 +203,11 @@ class MainActivity : AppCompatActivity() {
             this.tvTime = view?.findViewById(R.id.tvTime) as TextView
             this.ivEdit = view?.findViewById(R.id.ivEdit) as ImageView
             this.ivDelete = view?.findViewById(R.id.ivDelete) as ImageView
+
+
         }
+
+
     }
 
 /*
@@ -245,6 +257,31 @@ private fun showDialog() {
 
     dialog.show()
 }
+/*
+    private fun showDialogContent() {
+
+        lateinit var dialog: AlertDialog
+
+
+
+        val builder = AlertDialog.Builder(this)
+
+
+        builder.setTitle("Información")
+        //Toast.makeText(this, "Click en " + listEvents[position].title, Toast.LENGTH_SHORT).show()
+        builder.setMessage("Se ha Removido el Evento" + listEvents[])
+
+
+        val dialogClickListener = DialogInterface.OnClickListener { _, which -> }
+
+        builder.setNeutralButton("Hecho",dialogClickListener)
+
+        dialog = builder.create()
+
+        dialog.show()
+    }
+
+*/
 
 
 /*última linea*/

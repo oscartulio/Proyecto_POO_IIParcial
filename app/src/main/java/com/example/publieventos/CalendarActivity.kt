@@ -71,6 +71,7 @@ class CalendarActivity : AppCompatActivity(){
             /*------------------------------------------------------------------------*/
             val Builder = AlertDialog.Builder(this)
                 Builder.setTitle("Descripcion Del Evento")
+
             val event = sharedPreferences.getString("Evento", "")
             val fecha = sharedPreferences.getString("Fecha", "")
             val hora = sharedPreferences.getString("Hora", "")
