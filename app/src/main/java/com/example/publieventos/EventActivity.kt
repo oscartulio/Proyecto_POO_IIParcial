@@ -18,4 +18,6 @@ class  EventActivity{
         this.content = content
     }
 
+
 }
+

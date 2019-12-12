@@ -18,7 +18,7 @@ class AddEventActivity : AppCompatActivity() {
 
         try {
             var bundle: Bundle = intent.extras
-            id = bundle.getInt("MainActId", 0)
+            id = bundle.getInt("Id", 0)
             if (id != 0) {
                 edtTitle.setText(bundle.getString("Title"))
                 edtDate.setText(bundle.getString("Date"))

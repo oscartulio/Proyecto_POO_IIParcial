@@ -51,11 +51,11 @@
 
     <Button
         android:id="@+id/btAdd"
-        android:layout_width="138dp"
-        android:layout_height="wrap_content"
+        android:layout_width="299dp"
+        android:layout_height="38dp"
         android:layout_marginStart="68dp"
         android:layout_marginLeft="68dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="6dp"
         android:background="@color/colorPrimary"
         android:text="Guardar"
         app:layout_constraintBottom_toBottomOf="parent"
